@@ -224,19 +224,6 @@ groups:
             Context switching is growing on node (> 4000 / s)
               VALUE = {{ $value }}
               LABELS = {{ $labels }}
-      - alert: HostSwapIsFillingUp
-        expr: >-
-          (1 - (node_memory_SwapFree_bytes / node_memory_SwapTotal_bytes)) * 100
-          > 80
-        for: 2m
-        labels:
-          severity: warning
-        annotations:
-          summary: 'Host swap is filling up (instance {{ $labels.instance }})'
-          description: |-
-            Swap is filling up (>80%)
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
       - alert: HostSystemdServiceCrashed
         expr: 'node_systemd_unit_state{state="failed"} == 1'
         for: 0m

@@ -390,6 +390,7 @@ enable_octavia_driver_agent: "{{ enable_octavia | bool and neutron_plugin_agent 
 #enable_osprofiler: "no"
 #enable_placement: "{{ enable_nova | bool or enable_zun | bool }}"
 enable_prometheus: "yes"
+enable_proxysql: "yes"
 #enable_qdrouterd: "{{ 'yes' if om_rpc_transport == 'amqp' else 'no' }}"
 enable_redis: "yes"
 #enable_sahara: "no"
