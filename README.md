@@ -1,2 +1,1 @@
-# infra-labs-kolla-ansible
-# infra-labs-kolla-ansible
+# Kolla-Ansible Configs for Infra Labs
