@@ -1,6 +1,6 @@
-passwords.yml*
 *certificates/
 *.bk
 *.keyring
 *.sh
 prometheus-alertmanager.yml
+ansible_vault_pass
