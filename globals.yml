@@ -34,7 +34,7 @@ kolla_base_distro: "ubuntu"
 kolla_install_type: "source"
 
 # Do not override this unless you know what you are doing.
-openstack_release: "zed"
+openstack_release: "2023.1"
 
 # Docker image tag used by default.
 openstack_tag: "{{ openstack_release ~ openstack_tag_suffix }}"
@@ -77,10 +77,10 @@ kolla_container_engine: docker
 # Docker options
 ################
 # Custom docker registry settings:
-docker_registry: 192.168.0.10:5000
+docker_registry: 192.168.0.1:80
 # Please read the docs carefully before applying docker_registry_insecure.
 docker_registry_insecure: "yes"
-#docker_registry_username:
+docker_registry_username: robot$kolla
 # docker_registry_password is set in the passwords.yml file.
 
 # Namespace of images:
