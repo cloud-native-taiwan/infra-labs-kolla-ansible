@@ -1,27 +1,30 @@
 # These initial groups are the only groups required to be modified. The
 # additional groups are for more control of the environment.
 [all]
-openstack[01:03] ansible_user=debian neutron_external_interface="ens1np0.2116,ens1np0.2240" network_interface=ens1np0.1113 api_interface=ens1np0.1113 storage_interface=ens1np0 tunnel_interface=ens1np0.100 migration_interface=ens1np0.101 docker_registry="192.168.0.10:5000"
+openstack[01:02] ansible_user=debian neutron_external_interface="bond0.2116,bond0.2240" network_interface=bond0.1113 api_interface=bond0.1113 storage_interface=bond0 tunnel_interface=bond0.100 migration_interface=bond0.101
 openstack[04:05] ansible_user=debian neutron_external_interface="bond0.2116,bond0.2240" network_interface=bond0.1113 api_interface=bond0.1113 storage_interface=bond0 tunnel_interface=bond0.100 migration_interface=bond0.101 docker_registry="192.168.0.10:5000"
+arm01 ansible_user=debian neutron_external_interface="bond0.2116,bond0.2240" network_interface=bond0.1113 api_interface=bond0.1113 storage_interface=bond0 tunnel_interface=bond0.100 migration_interface=bond0.101
 
 [control]
 # These hostname must be resolvable from your deployment host
-openstack[01:03] ansible_user=debian neutron_external_interface="ens1np0.2116,ens1np0.2240" network_interface=ens1np0.1113 api_interface=ens1np0.1113 storage_interface=ens1np0 tunnel_interface=ens1np0.100 migration_interface=ens1np0.101 docker_registry="192.168.0.10:5000"
+openstack[01:02] ansible_user=debian neutron_external_interface="bond0.2116,bond0.2240" network_interface=bond0.1113 api_interface=bond0.1113 storage_interface=bond0 tunnel_interface=bond0.100 migration_interface=bond0.101
+openstack04 ansible_user=debian neutron_external_interface="bond0.2116,bond0.2240" network_interface=bond0.1113 api_interface=bond0.1113 storage_interface=bond0 tunnel_interface=bond0.100 migration_interface=bond0.101
 
 # The above can also be specified as follows:
-#control[01:03]     ansible_user=kolla
+#control[02:03]     ansible_user=kolla
 
 # The network nodes are where your l3-agent and loadbalancers will run
 # This can be the same as a host in the control group
 [network]
-openstack[01:03] ansible_user=debian neutron_external_interface="ens1np0.2116,ens1np0.2240" network_interface=ens1np0.1113 api_interface=ens1np0.1113 storage_interface=ens1np0 tunnel_interface=ens1np0.100 migration_interface=ens1np0.101 docker_registry="192.168.0.10:5000"
+openstack[01:02] ansible_user=debian neutron_external_interface="bond0.2116,bond0.2240" network_interface=bond0.1113 api_interface=bond0.1113 storage_interface=bond0 tunnel_interface=bond0.100 migration_interface=bond0.101
 
 [compute]
-openstack[01:03] ansible_user=debian neutron_external_interface="ens1np0.2116,ens1np0.2240" network_interface=ens1np0.1113 api_interface=ens1np0.1113 storage_interface=ens1np0 tunnel_interface=ens1np0.100 migration_interface=ens1np0.101 docker_registry="192.168.0.10:5000"
 openstack[04:05] ansible_user=debian neutron_external_interface="bond0.2116,bond0.2240" network_interface=bond0.1113 api_interface=bond0.1113 storage_interface=bond0 tunnel_interface=bond0.100 migration_interface=bond0.101 docker_registry="192.168.0.10:5000"
+openstack[01:02] ansible_user=debian neutron_external_interface="bond0.2116,bond0.2240" network_interface=bond0.1113 api_interface=bond0.1113 storage_interface=bond0 tunnel_interface=bond0.100 migration_interface=bond0.101
+arm01 ansible_user=debian neutron_external_interface="bond0.2116,bond0.2240" network_interface=bond0.1113 api_interface=bond0.1113 storage_interface=bond0 tunnel_interface=bond0.100 migration_interface=bond0.101
 
 [monitoring]
-openstack01
+openstack[01:02]
 
 # When compute nodes and control nodes use different interfaces,
 # you need to comment out "api_interface" and other interfaces from the globals.yml
@@ -29,10 +32,10 @@ openstack01
 #compute01 neutron_external_interface=eth0 api_interface=em1 tunnel_interface=em1
 
 [storage]
-openstack[01:03] ansible_user=debian neutron_external_interface="ens1np0.2116,ens1np0.2240" network_interface=ens1np0.1113 api_interface=ens1np0.1113 storage_interface=ens1np0 tunnel_interface=ens1np0.100 migration_interface=ens1np0.101
+openstack[01:02] ansible_user=debian neutron_external_interface="bond0.2116,bond0.2240" network_interface=bond0.1113 api_interface=bond0.1113 storage_interface=bond0 tunnel_interface=bond0.100 migration_interface=bond0.101
 
 [ceph-mgr]
-openstack[01:02] ansible_user=debian neutron_external_interface="ens1np0.2116,ens1np0.2240" network_interface=ens1np0.1113 api_interface=ens1np0.1113 storage_interface=ens1np0 tunnel_interface=ens1np0.100 migration_interface=ens1np0.101
+openstack[01:02] ansible_user=debian neutron_external_interface="bond0.2116,bond0.2240" network_interface=bond0.1113 api_interface=bond0.1113 storage_interface=bond0 tunnel_interface=bond0.100 migration_interface=bond0.101
 
 [deployment]
 localhost       ansible_connection=local docker_registry="192.168.0.10:5001"
