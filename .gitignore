@@ -5,3 +5,4 @@
 prometheus-alertmanager.yml
 ansible_vault_pass
 clouds.yaml
+*.pem
