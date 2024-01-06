@@ -765,7 +765,7 @@ enable_prometheus_ceph_mgr_exporter: "yes"
 #enable_prometheus_blackbox_exporter: "{{ enable_prometheus | bool }}"
 
 # List of extra parameters passed to prometheus. You can add as many to the list.
-prometheus_cmdline_extras: "--query.timeout=1m --storage.tsdb.retention.size=30GB"
+prometheus_cmdline_extras: "--query.timeout=1m --storage.tsdb.retention.size=30GB --web.enable-admin-api"
 
 # List of extra parameters passed to cAdvisor. By default system cgroups
 # and container labels are not exposed to reduce time series cardinality.
