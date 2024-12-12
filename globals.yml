@@ -31,13 +31,13 @@ workaround_ansible_issue_8743: yes
 #config_strategy: "COPY_ALWAYS"
 
 # Valid options are ['centos', 'debian', 'rhel', 'ubuntu']
-kolla_base_distro: "debian"
+kolla_base_distro: "ubuntu"
 
 # Valid options are [ binary, source ]
 kolla_install_type: "source"
 
 # Do not override this unless you know what you are doing.
-openstack_release: "2023.2"
+openstack_release: "2024.2"
 
 # Docker image tag used by default.
 openstack_tag: "{{ openstack_release ~ openstack_tag_suffix }}"
@@ -602,9 +602,12 @@ cinder_backend_ceph: "yes"
 ###################
 # Valid options are [ bind9 ]
 designate_backend: "bind9"
-designate_ns_record: "infra.cloudnative.tw"
+designate_ns_record: 
+  - "ns1.cloudnative.tw"
+  - "ns2.cloudnative.tw"
 # Valid options are [ '', redis ]
 #designate_coordination_backend: "{{ 'redis' if enable_redis|bool else '' }}"
+designate_enable_notifications_sink: "yes"
 
 ########################
 # Nova - Compute Options
@@ -639,6 +642,8 @@ neutron_ovn_distributed_fip: "yes"
 
 # Enable DHCP agent(s) to use with OVN
 neutron_ovn_dhcp_agent: "no"
+neutron_dns_domain: "infra.cloudnative.tw."
+neutron_enable_ovn_agent: "yes"
 
 #############################
 # Horizon - Dashboard Options
@@ -912,7 +917,7 @@ ceph_rgw_hosts:
     port: 8080
   - host: openstack02
     port: 8080
-  - host: arm01
+  - host: openstack04
     port: 8080
 
 ceph_rgw_swift_account_in_url: true
@@ -921,3 +926,7 @@ haproxy_http_request_timeout: 60s
 om_enable_rabbitmq_high_availability: true
 docker_custom_config:
   live-restore: true
+ceph_rgw_swift_compatibility: false
+    #
+skyline_external_swift: "yes"
+skyline_external_swift_url: "https://s3.cloudnative.tw:6780/swift"
